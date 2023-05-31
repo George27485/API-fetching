@@ -2,8 +2,8 @@ async function fetchProductData() {
     try {
       let response = await fetch('https://dummyjson.com/products/');
       let translatedData = await response.json();
-      let actualProductData = translatedData;
-      console.log(actualProductData);
+      let actualProductData = translatedData.products;
+      
       return actualProductData;
     } catch (error) {
       console.error(error);
@@ -16,7 +16,7 @@ async function fetchProductData() {
     let myproducts = await fetchProductData();
   
     for(let i =0; i < myproducts.length; i++){
-        let myCurrProductObj = products[i];
+        let myCurrProductObj = myproducts[i];
       let newProductEle = document.createElement('p');
       newProductEle.innerText = `${myCurrProductObj.title}  ${myCurrProductObj.price}`;
       newProductEle.style.border = "3px solid black";
@@ -28,7 +28,7 @@ async function fetchProductData() {
     try {
       let postResponse = await fetch('https://dummyjson.com/posts/');
       let translatedPostData = await postResponse.json();
-      let actualPostData = translatedPostData;
+      let actualPostData = translatedPostData.posts;
       console.log(actualPostData);
       return actualPostData;
     } catch (error) {
